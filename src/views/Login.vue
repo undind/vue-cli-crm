@@ -59,7 +59,7 @@ export default {
     }
   },
   methods: {
-    submitHandler() {
+    async submitHandler() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
@@ -70,7 +70,12 @@ export default {
         password: this.password
       }
 
-      this.$router.push("/");
+      try {
+        await this.$store.dispatch('login', formData);
+        this.$router.push("/");
+      } catch (e) {
+        
+      }     
     }
   },
 }
