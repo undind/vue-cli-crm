@@ -15,11 +15,6 @@
 
       <AddRecordsButton />
 
-      <!-- <div class="fixed-action-btn">
-        <a class="btn-floating btn-large blue" href="#">
-          <i class="large material-icons">add</i>
-        </a>
-      </div> -->
     </div>
   </div>
 </template>
@@ -28,6 +23,7 @@
 import Navbar from '@/components/Navbar.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import AddRecordsButton from '@/components/AddRecordsButton.vue';
+import messages from '@/utils/messages';
 
 export default {
   name: 'main-layout',
@@ -35,6 +31,16 @@ export default {
     return {
       isOpen: true,
       loading: true
+    }
+  },
+  computed: {
+    error() {
+      return this.$store.getters.error;
+    }
+  },
+  watch: {
+    error(fbError) {
+      this.$error(messages[fbError.code] || 'Что-то пошло не так!');
     }
   },
   async mounted() {
