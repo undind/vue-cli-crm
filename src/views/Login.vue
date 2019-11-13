@@ -37,6 +37,11 @@ import messages from '@/utils/messages.js';
 
 export default {
   name: "login",
+  metaInfo() {
+    return {
+      title: this.$title('Menu_Categories')
+    }
+  },
   data() {
     return {
       email: "",

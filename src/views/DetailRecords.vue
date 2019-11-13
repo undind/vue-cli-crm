@@ -27,6 +27,11 @@
 <script>
 export default {
   name: 'detail',
+  metaInfo() {
+    return {
+      title: this.$title('Menu_Categories')
+    }
+  },
   data() {
     return {
       record: null,
